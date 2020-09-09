@@ -1,0 +1,22 @@
+<javac srcdir="./src" destdir="./build/classes">   
+    <classpath>
+        <pathelement path="lib/jbl.jar"/>
+    </classpath>
+</javac>
+Or if you need to add contents of jbl.jar to the jar you are creating, then you need to change your <jar> task to look like this:
+
+<jar destfile="./build/jar/DependencyFinder.jar" basedir="./build/classes>
+    <zipgroupfileset dir="lib" includes="jbl.jar" />
+    <manifest>
+        <attribute name="DependencyFinder" value="main"/>
+        <attribute name="Main-Class" value="org.ivanovpavel.YourMainClass"/>
+    </manifest>
+</jar>
+To add arguments to <java> call, use nested <arg> elements:
+
+<target name="run">
+    <java jar="./build/jar/DependencyFinder.jar:lib/jbl.jar" classname="dependencyfinder.DependencyFinder">  
+        <arg value="Alexander Rosenbaum"/>
+        <arg value="Dmitry Malikov"/>
+    </java>                  
+</target>
