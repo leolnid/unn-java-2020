@@ -1,0 +1,28 @@
+if (args.length == 3) {
+            try {
+                float a = Float.parseFloat(args[0]);
+                float b = Float.parseFloat(args[1]);
+                float c = Float.parseFloat(args[2]);
+
+                Triangle triangle = new Triangle(a, b, c);
+                switch (triangle.getType()) {
+                    case ACUTE:
+                        System.out.println("Acute");
+                        break;
+                    case OBTUSE:
+                        System.out.println("Obtuse");
+                        break;
+                    case STRAIGHT:
+                        System.out.println("Straight");
+                        break;
+                    case INVALID:
+                    default:
+                        System.out.println("Invalid");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Excaption: " + e);
+            }
+        } else {
+            System.out.println("Excaption: Invalid number of arguments");
+        }

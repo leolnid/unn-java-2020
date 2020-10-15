@@ -1,34 +1,35 @@
 package ru.leolnid.app.shape;
 
 public class Point {
-  protected float x;
-  protected float y;
-  protected float z;
+  protected double x;
+  protected double y;
 
-  Point(float x, float y, float z) {
+  Point(double x, double y) {
     this.x = x;
     this.y = y;
-    this.z = z;
   }
 
   Point() {
-    this(0f, 0f, 0f);
+    this(0f, 0f);
   }
 
   public Point add(Point other) {
-    return new Point(this.x + other.x, this.y + other.y, this.z + other.z);
+    return new Point(this.x + other.x, this.y + other.y);
   }
 
   public Point sub(Point other) {
-    return new Point(this.x - other.x, this.y - other.y, this.z - other.z);
+    return new Point(this.x - other.x, this.y - other.y);
   }
 
-  public Point mul(float n) {
-    return new Point(this.x * n, this.y * n, this.z * n);
+  public Point mul(double n) {
+    return new Point(this.x * n, this.y * n);
   }
 
   public Point reverse() {
-    return new Point(-this.x, -this.y, -this.z);
+    return new Point(-this.x, -this.y);
   }
 
+  public double getDistance(Point other) {
+    return Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
+  }
 }
