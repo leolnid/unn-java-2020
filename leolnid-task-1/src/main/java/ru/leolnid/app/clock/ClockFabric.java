@@ -10,4 +10,14 @@ public class ClockFabric {
         }
         throw new ClockException("Invalid clock type: " + type.name());
     }
+
+    public static Clock create(ClockType type, String mark, float price) throws ClockException {
+        switch (type) {
+            case CLOCK_WITH_SECONDS:
+                return new ClockWithSeconds(mark, price);
+            case CLOCK_WITHOUT_SECONDS:
+                return new ClockWithoutSeconds(mark, price);
+        }
+        throw new ClockException("Invalid clock type: " + type.name());
+    }
 }

@@ -49,4 +49,13 @@ public class ClockWithSeconds implements Clock {
             throw new ClockException("Invalid price: " + price);
         _price = price;
     }
+
+    @Override
+    public float getPrice() {
+        return _price;
+    }
+
+    public String getMark() {
+        return _mark;
+    }
 }

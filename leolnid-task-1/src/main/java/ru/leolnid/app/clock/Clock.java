@@ -8,4 +8,6 @@ public interface Clock {
     void setTime(float time) throws ClockException;
     void addTime(float time) throws ClockException;
     void setPrice(float price) throws ClockException;
+    float getPrice();
+    String getMark();
 }
