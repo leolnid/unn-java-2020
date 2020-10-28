@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ClockShop {
-    private Collection<Clock> _clocks = new HashSet<>();
+    private final Collection<Clock> _clocks = new HashSet<>();
 
     public boolean addClock(Clock clock) {
         return _clocks.add(clock);
@@ -33,7 +33,7 @@ public class ClockShop {
         if (_clocks.size() == 0)
             throw new ShopException("No valid clock in shop");
 
-        return  _clocks.stream().max(Comparator.comparing(Clock::getPrice)).get();
+        return _clocks.stream().max(Comparator.comparing(Clock::getPrice)).get();
     }
 
     public List<String> getMarks() {
