@@ -6,7 +6,12 @@ public class ClockWithoutSeconds extends ClockWithSeconds {
     }
 
     @Override
-    public float getSeconds() {
+    public int getSeconds() {
         return 0;
+    }
+
+    @Override
+    public ClockType getType() {
+        return ClockType.CLOCK_WITHOUT_SECONDS;
     }
 }

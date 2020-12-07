@@ -15,25 +15,29 @@ public class ClockWithSeconds implements Clock {
     }
 
     @Override
-    public float getSeconds() {
-        return _currentTime % (60);
+    public int getSeconds() {
+        return (int) (_currentTime % (60));
     }
 
     @Override
-    public float getMinutes() {
-        return _currentTime / 60 % 60;
+    public int getMinutes() {
+        return (int) (_currentTime / 60 % 60);
     }
 
     @Override
-    public float getHours() {
-        return _currentTime / (60 * 60);
+    public int getHours() {
+        return (int) (_currentTime / (60 * 60));
     }
 
     @Override
     public void setTime(float time) throws ClockException {
         if (time < 0)
             throw new ClockException("Invalid argument: " + time);
+
         _currentTime = time;
+
+        if (_currentTime >= 86400)
+            _currentTime %= 86400;
     }
 
     @Override
@@ -41,6 +45,9 @@ public class ClockWithSeconds implements Clock {
         if (time < 0)
             throw new ClockException("Invalid argument: " + time);
         _currentTime += time;
+
+        if (_currentTime >= 86400)
+            _currentTime %= 86400;
     }
 
     @Override
@@ -57,5 +64,22 @@ public class ClockWithSeconds implements Clock {
 
     public String getMark() {
         return _mark;
+    }
+
+    @Override
+    public ClockType getType() {
+        return ClockType.CLOCK_WITH_SECONDS;
+    }
+
+    @Override
+    public float getTime() {
+        return _currentTime;
+    }
+
+    @Override
+    public void replace(Clock newClock) {
+        _price = newClock.getPrice();
+        _mark = newClock.getMark();
+        _currentTime = newClock.getTime();
     }
 }
