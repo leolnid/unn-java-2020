@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @author Leonid Dyukov <leonid.dyukov@gmail.com>
@@ -26,11 +25,9 @@ public class App extends ClockShop {
     private final static Color backgroundColor = Color.WHITE;
 
     public static class ChangeClockDialog extends JDialog {
-        private final Clock clock;
 
         ChangeClockDialog(ClockComponent clockComponent, Clock clock) {
             super();
-            this.clock = clock;
 
             GridBagConstraints constraints = new GridBagConstraints();
             this.setLayout(new GridBagLayout());
